@@ -1,0 +1,11 @@
+		AREA RESET, CODE
+			
+			ENTRY
+			MOV R0,#00 ; A
+			MOV R1,#0x25 ; B
+			MOV R2,#0x34 ; C
+			MOV R3,#0x72; D
+			ADD R0,R2,R1
+			SUB R0,R0,R3
+STOP B STOP
+			END

@@ -1,0 +1,2 @@
+Dependencies for Project 'prog1', Target 'Target 1': (DO NOT MODIFY !)
+F (.\part1.asm)(0x67D253F2)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-ID:\Keil\Core\ARM\RV31\INC-ID:\Keil\Core\ARM\CMSIS\Include-ID:\Keil\Core\ARM\INC\Philips--pd "__UVISION_VERSION SETA 528"--list .\listings\part1.lst --xref -o .\objects\part1.o --depend .\objects\part1.d)

@@ -1,27 +1,43 @@
-#include <lpc214x.h>
+#include <LPC214X.H>
 
-void UART0_Init(void) {
-    PINSEL0 |= 0x00000005; // Enable TxD0 and RxD0 (P0.0 & P0.1)
-    U0LCR = 0x83;          // 8-bit data, 1 stop bit, no parity, DLAB=1
-    U0DLL = 97;            // Baud rate 9600 with PCLK = 15MHz
-    U0DLM = 0;
-    U0LCR = 0x03;          // Disable DLAB
+// Define LPC2148 Header File
+
+#define led IO1PIN // Define LED to Port1
+
+#define tled IO1DIR // Define Port1 as output
+
+void delay(int x);
+
+int main()
+
+{
+
+PINSEL2 = 0x00000000; // Define port lines as GPIO
+
+tled = 0x00010000; // Define P1.16as O/P
+
+led = 0x00000000; // Define P1.16 as zero
+
+while(1) // Loop forever
+
+{
+
+led = 0x00010000; // Turn ON P1.16
+
+delay(2000);
+
+led = 0x00000000; // Turn OFF P1.16
+
+delay(1500);
+
 }
 
-void UART0_SendChar(char ch) {
-    while (!(U0LSR & 0x20)); // Wait until the transmitter is ready
-    U0THR = ch;             // Send character
 }
 
-void delay() {
-    for (volatile int i = 0; i < 500000; i++); // Basic delay
-}
+void delay(int x)
+{
+unsigned int k,l;
 
-int main() {
-    UART0_Init(); // Initialize UART0
-
-    while (1) {
-        UART0_SendChar('B'); // Send 'B' to ESP32
-        delay();
-    }
+for(k = x;k > 0;k--)
+	for(l = 0;l < x;l++);
 }
